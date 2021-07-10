@@ -36,7 +36,7 @@ Finally one model was used for the Videogame object, this is in the file Videoga
 ## Shortcomings of the project
 1) Adding all CRUD operations would make it a lot more useful.
 2) Run and write some tests to ensure functionality in different scenarios.
-3) Using a component oriented front-end framework would make the application more reliable, scalable and with better state and lifecyle managemente of these components, for the sake of time and simplicity decided to use plain JS
+3) Using a component oriented front-end framework would make the application more reliable, scalable and with better state management for these components, for the sake of time and simplicity decided to use plain JS
 4) Some JS functionalities used for this project (fetch, etc) are only compatible with modern browsers, therefore, if legacy functionality is needed, then another alternative would be a better solution.
 
 ## Scalability
