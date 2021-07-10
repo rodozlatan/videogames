@@ -7,6 +7,15 @@ Application to store and search videogames. Frontend created with bootstrap 5 an
 ## Installation
 1) Download the project folder and place it inside your server's web folder.
 2) Inside the config folder there's a sql file with the database code, this schema should be created for the application to function correctly.
+3) To modify the results per page for the pagination functionality, go to the file config.php located in the config folder inside the application.
+ ```
+  videogames\application\config\config.php
+ ```
+ Go to line 525 to find the following code:
+ ```
+ $config['rowperpage'] = 5;
+ ```
+ Finally change the number 5 to any integer greater than 0.
 
 ## Shortcomings of the project
 1) Adding all CRUD operations would make it a lot more useful.
