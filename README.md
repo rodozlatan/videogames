@@ -5,7 +5,7 @@ Videogames Single Page Application
 Application to store and search videogames. Frontend created with bootstrap 5 and vanilla JS, backend created with Codeigniter 4, database with MySQL v5.
 
 ## Installation
-1) Download the project folder and place it inside your server's web folder.
+1) Download the project folder and place it inside your web server's root folder.
 2) Inside the config folder there's a sql file with the database code, this schema should be created for the application to function correctly.
 3) To modify the results per page for the pagination functionality, go to the file config.php located in the config folder inside the application.
  
