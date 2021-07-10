@@ -20,6 +20,7 @@ Application to store and search videogames. Frontend created with bootstrap 5 an
 
 ## Overall functionality
 The project is made with a MVC structure, having one main view which is home.php, in that file all the front end of the single page application can be found.
+
  ```videogames\application\views\home.php```
  
 Two controllers were used for this application, the main controller which loads the main view of the project, called Home.php, this controller routes the application to the view and renders it, it has only one default method for this purpose.
@@ -29,6 +30,7 @@ The other controller is the one that handles Ajax calls, since all database oper
 ```videogames\application\controllers\Ajax.php```
  
 Finally one model was used for the Videogame object, this is in the file Videogames_model.php, in here models are created from the database using information sent by the controller, the main methods are one to get videogames (read them from the database), another to set a videogame (store it into the database) and a couple more for the pagination to work.
+
 ```videogames\application\models\Videogames_model.php```
 		
 ## Shortcomings of the project
