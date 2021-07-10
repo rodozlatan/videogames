@@ -2,7 +2,7 @@
 Videogames Single Page Application
 
 ## Description
-Application to store and search videogames. Frontend created with bootstrap 5 and vanilla JS, backend created with Codeigniter 4 and with MySQL v5.
+Application to store and search videogames. Frontend created with bootstrap 5 and vanilla JS, backend created with Codeigniter 4, database with MySQL v5.
 
 ## Installation
 1) Download the project folder and place it inside your server's web folder.
