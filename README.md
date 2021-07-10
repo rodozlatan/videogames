@@ -9,7 +9,7 @@ Application to store and search videogames. Frontend created with bootstrap 5 an
 2) Inside the config folder there's a sql file with the database code, this schema should be created for the application to function correctly.
 3) To modify the results per page for the pagination functionality, go to the file config.php located in the config folder inside the application.
  ```
-  videogames\application\config\config.php
+ videogames\application\config\config.php
  ```
  Go to line 525 to find the following code:
  ```
@@ -19,16 +19,17 @@ Application to store and search videogames. Frontend created with bootstrap 5 an
 
 ## Overall functionality
 The project is made with a MVC structure, having one main view which is home.php, in that file all the front end of the single page application can be found.
+
  ```videogames\application\views\home.php```
  
 Two controllers were used for this application, the main controller which loads the main view of the project, called Home.php, this controller routes the application to the view and renders it, it has only one default method for this purpose.
-	 ```videogames\application\controllers\Home.php```
+```videogames\application\controllers\Home.php```
 	 
 The other controller is the one that handles Ajax calls, since all database operations were handled by fetch calls. This one has basically two methods, one gets all the videogames and prepares them for the view, and the other method sets a videogame to store it into the database. In both information is received and prepared from the view to call the database models and return the data back to the view.
- ```videogames\application\controllers\Ajax.php```
+```videogames\application\controllers\Ajax.php```
  
 Finally one model was used for the Videogame object, this is in the file Videogames_model.php, in here models are created from the database using information sent by the controller, the main methods are one to get videogames (read them from the database), another to set a videogame (store it into the database) and a couple more for the pagination to work.
-	 ```videogames\application\models\Videogames_model.php```
+```videogames\application\models\Videogames_model.php```
 		
 ## Shortcomings of the project
 1) Adding all CRUD operations would make it a lot more useful.
