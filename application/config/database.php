@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require __DIR__.'/config.php';
+
+if(!isset($config)) {
+	$config = [];
+}
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -74,11 +79,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	   => 'mysql:host=localhost;dbname=videogames;charset=utf8mb4;',
-	'hostname' => '',
-	'username' => 'root',
-	'password' => '',
-	'database' => '',
+	'dsn' => "mysql:host={$config['db-host']};dbname={$config['db-database']};charset=utf8mb4;",
+	'hostname' => $config['db-host'],
+	'username' => $config['db-username'],
+	'password' => $config['db-password'],
+	'database' => $config['db-database'],
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

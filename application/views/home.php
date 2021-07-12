@@ -83,7 +83,7 @@
                 </tr>
               </thead>
               <tbody>
-                
+
               </tbody>
             </table>
             <nav id="navPagination">
@@ -96,23 +96,23 @@
     <script>
       (function () {
         'use strict'
-        
+
         fetchData();
 
-        var btnSend = document.getElementById('btnSend');
-        btnSend.addEventListener("click", function(event) {
+		  const btnSend = document.getElementById('btnSend');
+		  btnSend.addEventListener("click", function(event) {
           document.getElementById("alertContainer").innerHTML = '';
           if(!processForm('submit', 'mainForm', event)) return false;
         }, false);
-        
-        var btnReset = document.getElementById('btnReset');
-        btnReset.addEventListener("click", function(event) {
+
+		  const btnReset = document.getElementById('btnReset');
+		  btnReset.addEventListener("click", function(event) {
           document.getElementById("alertContainer").innerHTML = '';
           processForm('reset', 'mainForm', event);
         }, false);
-        
-        var txtSearch = document.getElementById('txtSearch');
-        txtSearch.addEventListener("keyup", function(event) {
+
+		  const txtSearch = document.getElementById('txtSearch');
+		  txtSearch.addEventListener("keyup", function(event) {
           document.getElementById("txtPage").value = 1
           fetchData();
         }, false);
@@ -127,13 +127,18 @@
             }
             fetchData();
           }
-        });   
+        });
       })()
-      
+
       async function fetchData() {
         document.getElementById("navPagination").innerHTML = '';
-        var page = document.getElementById("txtPage").value;
-        const response = await fetch('http://localhost/videogames/Ajax/getVideogames/'+page+'/'+document.getElementById('txtSearch').value);
+		  const page = document.getElementById("txtPage").value;
+		  let host = 'http://perez.videogames/';
+		  if (!host) {
+			  host = 'http://localhost/videogames/';
+		  }
+
+		  const response = await fetch(`${host}Ajax/getVideogames/${page}/${document.getElementById('txtSearch').value}`);
         const data = await response.json();
         const tBody = document.querySelector("#tableResults tbody");
         while (tBody.firstChild) {
@@ -141,11 +146,11 @@
         }
         document.getElementById("navPagination").innerHTML = data.pagination;
         data.result.forEach(obj => {
-          var row = document.createElement("tr");
-            Object.entries(obj).forEach(([key, value]) => {
-              var cell = document.createElement("td");
-              var textCell = document.createTextNode(`${value}`);
-              cell.appendChild(textCell);
+			const row = document.createElement("tr");
+			Object.entries(obj).forEach(([key, value]) => {
+				const cell = document.createElement("td");
+				const textCell = document.createTextNode(`${value}`);
+				cell.appendChild(textCell);
               row.appendChild(cell);
             });
             tBody.appendChild(row);
@@ -153,8 +158,8 @@
         }
 
       function processForm(action, formID, event){
-        var form = document.getElementById(formID);
-        switch(action){
+		  const form = document.getElementById(formID);
+		  switch(action){
           case 'submit':
             if (!form.checkValidity()) {
               event.preventDefault()
@@ -173,16 +178,19 @@
       }
 
       async function setVideogame() {
-        var txtName       = document.getElementById("txtName").value.trim()
-        var txtPublisher  = document.getElementById("txtPublisher").value.trim()
-        var txtNickname   = document.getElementById("txtNickname").value.trim()
-        var selectRating  = document.getElementById("selectRating").value
-        var result, alertTitle = "", alertMessage, alertType;
-        let response = await  fetch("http://localhost/videogames/Ajax/setVideogame/"+txtName+"/"+txtPublisher+"/"+selectRating+"/"+txtNickname)
-                                .then(response => response.json())
-                                .then(data => result = data);
-                                console.log(result.query);
-        if(result.query == true){
+		  const txtName = document.getElementById("txtName").value.trim();
+		  const txtPublisher = document.getElementById("txtPublisher").value.trim();
+		  const txtNickname = document.getElementById("txtNickname").value.trim();
+		  const selectRating = document.getElementById("selectRating").value;
+		  let result, alertTitle = "", alertMessage, alertType;
+		  let host = 'http://perez.videogames/';
+		  if (!host) {
+		  	host = 'http://localhost/videogames/';
+		  }
+
+		  const response = await fetch(`${host}/Ajax/setVideogame/${txtName}/${txtPublisher}/${selectRating}/${txtNickname}`).then(response => response.json()).then(data => result = data);
+		  console.log(result.query);
+        if(result.query === true){
           alertTitle    = 'Success! ';
           alertMessage  = 'Videogame added.';
           alertType     =  'alert-success';
@@ -196,21 +204,21 @@
         const alertContainer = document.getElementById("alertContainer");
         alertContainer.innerHTML = '';
 
-        var divAlert = document.createElement("div");
-        divAlert.classList.add('alert');
+		  const divAlert = document.createElement("div");
+		  divAlert.classList.add('alert');
         divAlert.classList.add(alertType);
         divAlert.classList.add('alert-dismissible');
         divAlert.classList.add('fade');
         divAlert.classList.add('show');
         divAlert.setAttribute('role', 'alert');
 
-        var alertTitleStrong = document.createElement("strong");
-        var alertTitleText = document.createTextNode(alertTitle);
-        var alertMessageText = document.createTextNode(alertMessage);
-        alertTitleStrong.appendChild(alertTitleText);
+	  const alertTitleStrong = document.createElement("strong");
+	  const alertTitleText = document.createTextNode(alertTitle);
+	  const alertMessageText = document.createTextNode(alertMessage);
+	  alertTitleStrong.appendChild(alertTitleText);
 
-        var alertClose = document.createElement("button");
-        alertClose.classList.add('btn-close');
+		  const alertClose = document.createElement("button");
+		  alertClose.classList.add('btn-close');
         alertClose.setAttribute('data-bs-dismiss', 'alert');
         alertClose.setAttribute('aria-label', 'Close');
 
@@ -220,7 +228,7 @@
 
         alertContainer.appendChild(divAlert);
 
-        fetchData();
+        await fetchData();
       }
     </script>
   </body>
