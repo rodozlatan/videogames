@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require __DIR__.'/../../config/baseConfig.php';
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/videogames/';//
+$config['base_url'] = $config['base_url'] ?? 'http://localhost/videogames/';//
 
 /*
 |--------------------------------------------------------------------------
@@ -136,7 +138,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = $config['composer_autoload'] ?? FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -522,4 +524,9 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['rowperpage'] = 5;
+$config['db-username'] = $config['db-username'] ?? 'root';
+$config['db-password'] = $config['db-password'] ?? '';
+$config['db-host'] = $config['db-host'] ?? 'localhost';
+$config['db-database'] = $config['db-database'] ?? 'videogames';
+
+$config['rowperpage'] = $config['rowperpage'] ?? 5;
